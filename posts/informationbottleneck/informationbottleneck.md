@@ -120,7 +120,7 @@ plt.show()
     
 
 
-We can readily see that for each iteration, the accuracy with which the curve fills space is doubled (error is halved i.e. error energy is $1/4$th). By accuracy I refer to the average distance from a random point in 2D space to the closest point on the curve.
+We can readily see that for each iteration, the accuracy with which the curve fills space is doubled (error is halved i.e. error energy is $1/4$ th). By accuracy I refer to the average distance from a random point in 2D space to the closest point on the curve.
 
 Each iteration, on the other hand, splits every segment into 4 sub-segments, at a cost of 2 bits. Halving the error thus comes at a cost of 2 bits. This results thus follows results of conventional lossy coding; halving error costs as many bits as we have dimensions. Now we have 2 dimensions so halving error costs 2 bits.
 
