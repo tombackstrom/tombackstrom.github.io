@@ -1,19 +1,17 @@
 ---
-jupyter:
-  jupytext:
-    formats: ipynb,md
-    text_representation:
-      extension: .md
-      format_name: markdown
-      format_version: '1.3'
-      jupytext_version: 1.13.8
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
+jupytext:
+  formats: ipynb,md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.13.8
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
 ---
 
-<!-- #region -->
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/tombackstrom/tombackstrom.github.io/HEAD?labpath=posts/informationbottleneck.ipynb)
 
 ### Thoughts and Theory, Notes on speech processing, 2.9.2021
@@ -43,9 +41,13 @@ If you have not heard about space-filling curves, start by watching the [Numberp
 In terms of information content, now, the one-dimensional curve contains the information of the two-dimensional space. If we start with some particular point in 2D-space $(x,y)$, we can convert that to a point $d$ on the one-dimensional line, and then convert it back to the 2D-point $(x,y)$. It is just that there is an infinite recursion involved, so this is not a practical algorithm.
 
 We can however, implement a finite number of recursions to get an approximation. In the example below, I have implemented an Hilbert-curve and plotted the curve for different number of recursions $N$.
-<!-- #endregion -->
 
-```python jupyter={"source_hidden": true} tags=[]
+```{code-cell} ipython3
+---
+jupyter:
+  source_hidden: true
+tags: []
+---
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
@@ -118,7 +120,6 @@ plt.title('N=6')
 plt.show()
 ```
 
-<!-- #region -->
 We can readily see that for each iteration, the accuracy with which the curve fills space is doubled (error is halved i.e. error energy is $1/4$th). By accuracy I refer to the average distance from a random point in 2D space to the closest point on the curve.
 
 Each iteration, on the other hand, splits every segment into 4 sub-segments, at a cost of 2 bits. Halving the error thus comes at a cost of 2 bits. This results thus follows results of conventional lossy coding; halving error costs as many bits as we have dimensions. Now we have 2 dimensions so halving error costs 2 bits.
@@ -152,8 +153,7 @@ This is was my first, quick-and-dirty attempt of characterizing the information 
 The above presentation does not have rigorous proofs and there’s plenty of hand-waving involved. For example, I detailed only the case where a 2D signal is mapped to a 1D signal (2D-to-1D), it can be easily extended to ND-to-1D, but a bit more reflection is needed to extend it to arbitrary width bottlenecks, ND-to-KD. I also did not properly define reconstruction accuracy, nor the number of RELUs in a space-filling curve and so on. I further would like to actually implement the space filling curve with something like pytorch as a demonstration. The VQ discussion was also superficial. I also haven’t done a literature study; let me know if you know of related work! Perhaps next time.
 
 In any case, this is a start for a theoretical discussion about information content in autoencoders and related deep neural networks.
-<!-- #endregion -->
 
-```python
+```{code-cell} ipython3
 
 ```
